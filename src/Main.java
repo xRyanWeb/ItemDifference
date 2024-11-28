@@ -2,6 +2,18 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Scanner;
 
+interface Calculate {
+
+    float calculate();
+}
+
+abstract  class Calculates_Items implements Calculate {
+    public float Calculate(float a, float b) {
+        return a - b;
+    }
+
+}
+
 public class Main {
 
     public static boolean isReady = false;
@@ -18,7 +30,15 @@ public class Main {
           System.out.println("Enter Item Price: ");
           float item2 = (int) n.nextFloat();
 
-          float calc = AppKt.Calc((int) item1, (int) item2);
+
+
+          Calculates_Items m = new Calculates_Items() {
+              @Override
+              public float calculate() {
+                  return 0;
+              }
+          };
+          float calc  = m.Calculate(item1, item2);
 
           BigDecimal n1 = BigDecimal.valueOf(calc);
 
